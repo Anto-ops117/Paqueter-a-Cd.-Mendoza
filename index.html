@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Envios Autorizado Cd.Mendoza</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: white;
+          color: #4B0082; /* morado */
+          margin: 0;
+          padding: 0;
+        }
+        header {
+          background-color: #FF6600; /* naranja */
+          color: white;
+          text-align: center;
+          padding: 20px;
+        }
+        section {
+          padding: 20px;
+          text-align: center;
+        }
+        .info {
+          margin: 20px auto;
+          max-width: 600px;
+          border: 2px solid #4B0082;
+          border-radius: 10px;
+          padding: 15px;
+        }
+        .qr-container {
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+          margin-top: 20px;
+          flex-wrap: wrap;
+        }
+        .qr-container img {
+          width: 150px;
+          height: 150px;
+        }
+        .btn-container {
+          margin-top: 30px;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        .btn {
+          background-color: #4B0082; /* morado */
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          text-decoration: none;
+          transition: 0.6s;
+        }
+        .btn:hover {
+          background-color: #FF6600; /* naranja */
+        }
+        footer {
+          background-color: #4B0082;
+          color: white;
+          text-align: center;
+          padding: 15px;
+          font-size: 14px;
+        }
+
+        /* Carrusel */
+        .carousel {
+          position: relative;
+           width: 280px;   /* un poco más grande que la imagen */
+           height: 380px;  /* ajustado al alto de la imagen */
+          max-width: 80%;
+          margin: 10px auto;
+          overflow: hidden;
+          border: 2px solid #4B0082;
+          border-radius: 50px;
+        }
+        .slides {
+          display: flex;
+          transition: transform 0.10s ease-in-out;
+        }
+        .slides img {
+  width: 25000px;      /* ancho fijo más pequeño */
+  height: 500px;     /* alto fijo */
+  object-fit: cover; /* recorta la imagen si no encaja */
+  margin: 0 auto;    /* centra la imagen */
+}
+
+        .buttons {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+        }
+        .btn-slide {
+          background-color: #4B0082;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 50%;
+          font-size: 18px;
+          transition: 0.3s;
+        }
+        .btn-slide:hover {
+          background-color: #FF6600;
+        }
+
+        /* Cuadros informativos */
+        .info-box {
+          border: 2px solid #4B0082;
+          border-radius: 10px;
+          padding: 15px;
+          margin: 20px auto;
+          max-width: 600px;
+          background-color: #f9f9f9;
+          text-align: left;
+        }
+        .info-box h2 {
+          color: #FF6600;
+          margin-bottom: 10px;
+          text-align: center; /* centrado de títulos */
+        }
+        .info-box ul {
+          list-style-type: "✔ ";
+          padding-left: 20px;
+        }
+        .not-allowed {
+          border-color: red;
+          background-color: #ffe6e6;
+        }
+        .not-allowed ul {
+          list-style-type: "✘ ";
+        }
+        .compare .columns {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        .compare .columns div {
+          flex: 1;
+          background: #fff;
+          padding: 10px;
+          border-radius: 8px;
+        }
+
+        /* Logos de paqueterías */
+        .paqueterias {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin-top: 15px;
+          flex-wrap: wrap;
+        }
+        .empresa {
+          text-align: center;
+          margin: 10px;
+        }
+        .empresa img {
+          width: 120px;
+          height: auto;
+          display: block;
+          margin: 0 auto 10px;
+          transition: transform 0.3s ease;
+        }
+        .empresa img:hover {
+          transform: scale(1.1);
+        }
+        .empresa p {
+          font-weight: bold;
+          color: #4B0082;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+          .btn-slide {
+            padding: 8px;
+            font-size: 14px;
+          }
+          .qr-container img {
+            width: 120px;
+            height: 120px;
+          }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Centro Autorizado de Envios</h1>
+    <h1>Cd.Mendoza</h1>
+    <p>Tu envío seguro y rápido</p>
+</header>
+
+<section>
+    <!-- Carrusel -->
+    <h2>Galería de Paquetería</h2>
+    <div class="carousel">
+        <div class="slides" id="slides">
+            <img src="img/foto2.jpeg" alt="Imagen 2">
+            <img src="img/foto4.jpeg" alt="Imagen 4">
+            <img src="img/foto5.jpeg" alt="Imagen 5">
+            <img src="img/foto6.jpeg" alt="Imagen 6">
+            <img src="img/foto7.jpeg" alt="Imagen 7">
+            <img src="img/foto3.jpeg" alt="Imagen 3">
+        </div>
+        <div class="buttons">
+            <button class="btn-slide" onclick="prevSlide()">&#10094;</button>
+            <button class="btn-slide" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <p style="text-align:center; margin-top:15px; color:#4B0082;">
+        Aquí puedes ver ejemplos de los envíos que manejamos con nuestras paqueterías autorizadas.
+    </p>    <!-- Paqueterías -->
+    <div class="info-box">
+        <h2>Paqueterías que se manejan</h2>
+        <div class="paqueterias">
+            <div class="empresa">
+                <a href="https://www.fedex.com/es-us/home.html" target="_blank" rel="noopener noreferrer">
+                    <img src="img/Fedex.jpg" alt="FedEx Logo">
+                </a>
+                <p>FedEx</p>
+            </div>
+            <div class="empresa">
+                <a href="https://www.dhl.com/mx-es/home/rastreo.html" target="_blank" rel="noopener noreferrer">
+                    <img src="img/DHL.jpg" alt="DHL Logo">
+                </a>
+                <p>DHL</p>
+            </div>
+            <div class="empresa">
+                <a href="https://www.estafeta.com/rastrear-envio?rastreo=true" target="_blank" rel="noopener noreferrer">
+                    <img src="img/estafeta.png" alt="Estafeta Logo">
+                </a>
+                <p>Estafeta</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cosas permitidas -->
+    <div class="info-box">
+        <h2>Cosas permitidas para enviar</h2>
+        <ul>
+            <li>Mole, pipián, pepita para mole</li>
+            <li>Tortillas</li>
+            <li>Pan dulce</li>
+            <li>Frutas en conserva</li>
+            <li>Chiles secos</li>
+            <li>Chocolate</li>
+            <li>Café soluble</li>
+            <li>Dulces típicos</li>
+        </ul>
+    </div>
+
+    <!-- Comparativo -->
+    <div class="info-box compare">
+        <h2>Qué se acepta y qué no</h2>
+        <div class="columns">
+            <div>
+                <h3 style="color:green;">✔ Se acepta</h3>
+                <ul>
+                    <li>Alimentos empacados</li>
+                    <li>Dulces típicos</li>
+                    <li>Semillas en bolsa</li>
+                    <li>Conservas</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color:red;">✘ No se acepta</h3>
+                <ul>
+                    <li>Alcohol</li>
+                    <li>Tabaco</li>
+                    <li>Dinero en efectivo</li>
+                    <li>Armas</li>
+                    <li>Animales vivos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="info">
+        <h2>Información de contacto</h2>
+        <p><strong>Dirección:</strong> Av. Miguel Hidalgo, Camerino Z. Mendoza, Veracruz</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+5212721017343">+52 272 1017343</a></p>
+        <p><strong>Horarios:</strong> Lunes a Viernes de 09:00am a 07:00pm</p>
+        <p><strong>Sábados:</strong> 09:00am a 02:30pm</p>
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="info">
+        <h2 class="titulo">Accesos rápidos</h2>
+        <div class="qr-container">
+            <div>
+                <p>Ubicación</p>
+                <img src="img/frame.png" alt="QR Ubicación">
+            </div>
+            <div>
+                <p>WhatsApp</p>
+                <img src="img/wasap.png" alt="QR WhatsApp">
+            </div>
+        </div>
+
+        <!-- Botones interactivos -->
+        <div class="btn-container">
+            <a href="https://maps.app.goo.gl/QBKiPrAJgubqKNzr5" target="_blank" rel="noopener noreferrer" class="btn">Ver Ubicación</a>
+            <a href="https://wa.me/qr/SZUVUOIHGV5JO1" target="_blank" rel="noopener noreferrer" class="btn">Abrir WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Paquetería y Mensajería Cd.Mendoza - Todos los derechos reservados</p>
+</footer>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.getElementById("slides");
+    const totalSlides = slides.children.length;
+
+    function showSlide(index) {
+      if (index < 0) {
+        currentIndex = totalSlides - 1;
+      } else if (index >= totalSlides) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+      slides.style.transform = `translateX(-${currentIndex * slides.clientWidth}px)`;
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    // Cambio automático cada 5 segundos
+    setInterval(nextSlide, 5000);
+</script>
+</body>
+</html>
+
+
